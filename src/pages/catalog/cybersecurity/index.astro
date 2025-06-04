@@ -1,0 +1,59 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+const articlesObj = await import.meta.glob('./*.mdx', { eager: true });
+const articles = Object.values(articlesObj);
+const category = 'cybersecurity';
+const categoryName = 'Cybersecurity';
+const categoryTags = ['all', 'personal', 'web', 'network', 'cryptography'];
+---
+<Layout>
+
+    <div class="container">
+      <article class="article-container content-cybersecurity">
+        <div class="catalog-breadcrumbs">
+          <a href="/catalog/">Catalog</a>
+          <span class="separator">/</span>
+          <span>{categoryName}</span>
+        </div>
+        <header class="article-header">
+          <h1 class="article-title">{categoryName} Library</h1>
+          <div class="article-meta">
+            <span>{articles.length} article{articles.length !== 1 ? 's' : ''} on {categoryName.toLowerCase()} topics</span>
+          </div>
+        </header>
+        <div class="article-content">
+          <div class="section-description">
+            <p>This library contains articles on various cybersecurity topics, from personal account security to web application vulnerabilities and defensive coding practices. Whether you're looking to improve your personal online safety or enhance your technical security knowledge, you'll find valuable resources here.</p>
+          </div>
+          <div class="filter-categories tags-container">
+            {categoryTags.map((tag: string) => (
+              <span class={`tag category-tag${tag === 'all' ? ' tag-primary active' : ' tag-secondary'}`} data-category={tag}>{tag.charAt(0).toUpperCase() + tag.slice(1).replace('-', ' ')}</span>
+            ))}
+          </div>
+          <div class="search-container">
+            <i class="fas fa-search search-icon"></i>
+            <input type="text" id="articleSearch" class="search-input" placeholder="Search articles by title or topic..." />
+          </div>
+          <div id="articlesList">
+            {articles.map((article: any) => (
+              <div class="article-card" data-tags={article.frontmatter.tags ? article.frontmatter.tags.join(' ') : ''}>
+                <h3><a href={article.url}>{article.frontmatter.title}</a></h3>
+                <div class="article-meta">
+                  <span><i class="far fa-calendar-alt"></i> {new Date(article.frontmatter.date).toLocaleDateString('en-US')}</span>
+                </div>
+                <p>{article.frontmatter.description}</p>
+                <div class="article-tags tags-container">
+                  {article.frontmatter.tags && article.frontmatter.tags.map((tag: string) => <span class="tag">{tag}</span>)}
+                </div>
+              </div>
+            ))}
+          </div>
+          <div id="noResults" class="no-results" style="display: none;">
+            <p><i class="fas fa-search"></i> No articles found matching your search criteria.</p>
+          </div>
+        </div>
+      </article>
+    </div>
+
+  <script src="/src/assets/main.js" is:inline></script>
+</Layout> 

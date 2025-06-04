@@ -1,0 +1,37 @@
+---
+import Layout from '../../layouts/Layout.astro';
+---
+<Layout>
+    <div class="container">
+      <article class="article-container">
+        <header class="article-header">
+          <h1 class="article-title">Content Catalog</h1>
+          <div class="article-meta">
+            <span>Browse articles and resources by topic</span>
+          </div>
+        </header>
+        <div class="article-content">
+          <p>
+            Welcome to my content catalog. Here you'll find my articles, resources, and educational content organized by topic. 
+            Select a library below to explore content in that category.
+          </p>
+          <div class="catalog-grid">
+            <div class="catalog-card">
+              <i class="fas fa-shield-alt icon"></i>
+              <h3>Cybersecurity</h3>
+              <p>Explore articles on cybersecurity topics.</p>
+              <p><strong>Articles:</strong> 1</p>
+              <a href="/catalog/cybersecurity/" class="btn btn-primary">Browse Library <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="catalog-card">
+              <i class="fas fa-music icon"></i>
+              <h3>Music Theory</h3>
+              <p>Explore articles on music theory topics.</p>
+              <p><strong>Articles:</strong> 1</p>
+              <a href="/catalog/music-theory/" class="btn btn-primary">Browse Library <i class="fas fa-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+      </article>
+    </div>
+</Layout> 

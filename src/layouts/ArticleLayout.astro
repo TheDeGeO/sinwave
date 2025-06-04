@@ -1,0 +1,51 @@
+---
+import Layout from './Layout.astro';
+
+export interface Props {
+  title: string;
+  date: string;
+  description?: string;
+  tags?: string[];
+  readingTime?: string;
+}
+const { title, date, description, tags = [], readingTime } = Astro.props;
+// Format date to a human-readable string
+const formattedDate = new Date(date).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+// Infer category from the file path
+const pathname = Astro.url.pathname;
+const match = pathname.match(/\/catalog\/(\w+?)\//);
+const category = match ? match[1] : '';
+const categoryName = category === 'cybersecurity' ? 'Cybersecurity' : category === 'music-theory' ? 'Music Theory' : category;
+---
+<article class="article-container">
+  <div class="catalog-breadcrumbs">
+    <a href="/catalog/">Catalog</a>
+    <span class="separator">/</span>
+    <a href={`/catalog/${category}/`}>{categoryName}</a>
+    <span class="separator">/</span>
+    <span>{title}</span>
+  </div>
+  <header class="article-header">
+    <h1 class="article-title">{title}</h1>
+    <div class="article-meta">
+      <span><i class="far fa-calendar-alt"></i> <time datetime={date}>{formattedDate}</time></span>
+      {readingTime && <span><i class="far fa-clock"></i> {readingTime} min read</span>}
+    </div>
+  </header>
+  <div class="article-content">
+    {description && <p class="article-description">{description}</p>}
+    <slot />
+    {tags.length > 0 && (
+      <div class="article-tags">
+        {tags.map(tag => <span class="tag">{tag}</span>)}
+      </div>
+    )}
+  </div>
+  <footer class="article-footer">
+    <slot name="footer" />
+  </footer>
+</article> 

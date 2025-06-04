@@ -1,0 +1,97 @@
+/* Code highlighting and code block styles */
+
+/* Base code block styling */
+pre {
+    border-radius: var(--radius-lg);
+    overflow-x: auto;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--bg-accent);
+    position: relative;
+    margin: 1.5rem 0;
+    padding: 1rem;
+}
+
+/* Add language label */
+pre::before {
+    content: attr(data-language);
+    position: absolute;
+    top: 0.5rem;
+    right: 1rem;
+    font-size: var(--text-xs);
+    color: var(--fg-muted);
+    font-family: var(--font-mono);
+    text-transform: uppercase;
+}
+
+code {
+    font-family: var(--font-mono);
+    font-size: var(--text-sm);
+    line-height: var(--leading-normal);
+    display: block;
+}
+
+/* Inline code styling */
+:not(pre) > code {
+    background: var(--bg-highlight);
+    padding: 0.2em 0.4em;
+    border-radius: var(--radius-sm);
+    font-size: 0.9em;
+    color: var(--fg-light);
+    display: inline;
+}
+
+/* Loading state */
+pre.loading {
+    position: relative;
+}
+
+pre.loading::after {
+    content: "Loading...";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--fg-muted);
+}
+
+/* Copy button */
+pre .copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 2.5rem;
+    padding: 0.25rem 0.5rem;
+    font-size: var(--text-xs);
+    color: var(--fg-muted);
+    background: var(--bg-accent);
+    border: none;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+pre:hover .copy-button {
+    opacity: 1;
+}
+
+.copy-button:hover {
+    background: var(--bg-highlight);
+    color: var(--fg-light);
+}
+
+/* Ensure custom code block styles always apply */
+.article-content pre code,
+.article-content pre code.hljs,
+pre code,
+pre code.hljs {
+    background: var(--bg-darker) !important;
+    color: var(--fg-light) !important;
+    border-radius: var(--radius-sm);
+    padding: 0.2em 0.4em;
+}
+
+.article-content pre,
+pre {
+    background: var(--bg-darker) !important;
+    color: var(--fg-light) !important;
+}

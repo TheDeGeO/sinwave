@@ -1,0 +1,61 @@
+{
+  "$schema": "https://raw.githubusercontent.com/shikijs/shiki/main/packages/shiki/themes/schema.json",
+  "name": "gruvbox-material-custom",
+  "type": "dark",
+  "colors": {
+    "editor.background": "#1d2021",
+    "editor.foreground": "#ddc7a1"
+  },
+  "settings": [
+    {
+      "settings": {
+        "foreground": "#ddc7a1",
+        "background": "#1d2021"
+      }
+    },
+    {
+      "scope": ["keyword", "storage.type", "storage.modifier"],
+      "settings": { "foreground": "#ea6962" }
+    },
+    {
+      "scope": ["string", "constant.other.symbol", "variable", "support.constant", "support.variable", "doctag"],
+      "settings": { "foreground": "#a9b665" }
+    },
+    {
+      "scope": ["constant.numeric", "constant.language", "constant.character", "constant", "number", "literal", "params", "constant.other"],
+      "settings": { "foreground": "#d3869b" }
+    },
+    {
+      "scope": ["entity.name.function", "support.function", "function", "name", "attr"],
+      "settings": { "foreground": "#89b482" }
+    },
+    {
+      "scope": ["entity.name.type", "entity.name.class", "entity.name.tag", "support.class", "support.type", "type", "title"],
+      "settings": { "foreground": "#d8a657" }
+    },
+    {
+      "scope": ["entity.name.tag", "meta.tag", "support.type.property-name.css", "support.type.property-name", "tag", "selector", "selector-id", "selector-class", "selector-attr", "selector-pseudo"],
+      "settings": { "foreground": "#7daea3" }
+    },
+    {
+      "scope": ["comment", "punctuation.definition.comment", "quote", "deletion"],
+      "settings": { "foreground": "#a89984", "fontStyle": "italic" }
+    },
+    {
+      "scope": ["meta", "meta.keyword"],
+      "settings": { "foreground": "#a89984" }
+    },
+    {
+      "scope": ["markup.bold", "strong"],
+      "settings": { "fontStyle": "bold" }
+    },
+    {
+      "scope": ["markup.italic", "emphasis"],
+      "settings": { "fontStyle": "italic" }
+    },
+    {
+      "scope": ["markup.inline.raw", "code"],
+      "settings": { "foreground": "#ddc7a1", "background": "#141617" }
+    }
+  ]
+}
