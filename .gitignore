@@ -24,6 +24,7 @@ pnpm-debug.log*
 # VSCode settings
 .vscode/
 
+
 # System files
 Thumbs.db
 
